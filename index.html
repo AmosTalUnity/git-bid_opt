@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TJ Bid Optimization Tool</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600&display=swap" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <button id="defaultCSVButton" class="btn default-csv-btn">Download Template Bid Change File</button>
+    <div class="container">
+      <h1 class="title">TJ Bid Optimization Tool</h1>
+      <div class="input-group">
+        <label for="csvFile1" class="input-group__label">Bid Manager Export CSV:</label>
+        <input type="file" id="csvFile1" accept=".csv" class="input-group__input" />
+      </div>
+      <div class="input-group">
+        <label for="csvFile2" class="input-group__label">Bid Changes CSV:</label>
+        <input type="file" id="csvFile2" accept=".csv" class="input-group__input" />
+      </div>
+      <div class="button-wrapper">
+        <button onclick="processCSVs()" class="btn process-btn">Process Result</button>
+        <a id="downloadLink" class="btn download-link" style="display: none;">Download Processed CSV</a>
+      </div>
+      <div class="instructions">
+        <p>To use the TJ Bid Optimization Tool, follow these steps:</p>
+        <ol>
+          <li>Download a Bid Manager CSV (without ROAS) and enter it in the first input field.</li>
+          <li>Upload a Bid Changes CSV in the second input field. The CSV should have the following format:</li>
+          <ul>
+            <li>Column A: Ad Set ID</li>
+            <li>Column B: Publisher App ID</li>
+            <li>Column C: Percentage</li>
+          </ul>
+          <p>Here's an example of a valid Bid Changes CSV:</p>
+          <table border="1" cellpadding="5">
+            <tr>
+              <th>Ad Set ID</th>
+              <th>Publisher App ID</th>
+              <th>Percentage</th>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>DEFAULT_PER_APP_BID_GROUP_ID</td>
+              <td>110</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>42344-34343-22222</td>
+              <td>120</td>
+            </tr>
+          </table>
+          <p>In this example the bids of all the deafult apps of adset 1 will be increased by 10%, and in adset 2, the bids of app 42344-34343-22222 will be increased by 20%</p>
+
+          <li>Click the "Process Result" button to generate the processed CSV.</li>
+          <li>Upload the processed file the the CSV Bid Manager</li>
+
+        </ol>
+      </div>
+      
+      
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
